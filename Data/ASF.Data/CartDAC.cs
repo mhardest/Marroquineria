@@ -87,7 +87,7 @@ namespace ASF.Data
         public Cart SelectById(int id)
         {
             const string sqlStatement = "SELECT [Id], [Cookie],[Cart Date], [Item Count], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
-                "FROM dbo.Category WHERE [Id]=@Id ";
+                "FROM dbo.Cart WHERE [Id]=@Id ";
 
             Cart cart = null;
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -110,7 +110,7 @@ namespace ASF.Data
         public List<Cart> Select()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [Cookie], [Cart Date], [Item Count], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Category ";
+            const string sqlStatement = "SELECT [Id], [Cookie], [Cart Date], [Item Count], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Client ";
 
             var result = new List<Cart>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
