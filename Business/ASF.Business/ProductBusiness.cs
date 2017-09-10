@@ -8,14 +8,14 @@ using ASF.Data;
 
 namespace ASF.Business
 {
-    public class ClientBusiness
+    public class ProductBusiness
     {
-        /// <param name="client"></param>
+        /// <param name="product"></param>
         /// <returns></returns>
-        public Client Add(Client client)
+        public Product Add(Product product)
         {
-            var clientDac = new ClientDAC();
-            return clientDac.Create(client);
+            var productDac = new ProductDAC();
+            return productDac.Create(product);
         }
 
         /// <summary>
@@ -24,18 +24,18 @@ namespace ASF.Business
         /// <param name="id"></param>
         public void Remove(int id)
         {
-            var clientDac = new ClientDAC();
-            clientDac.DeleteById(id);
+            var productDac = new ProductDAC();
+            productDac.DeleteById(id);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Client> All()
+        public List<Product> All()
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.Select();
+            var productDac = new ProductDAC();
+            var result = productDac.Select();
             return result;
         }
 
@@ -44,21 +44,21 @@ namespace ASF.Business
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Client Find(int id)
+        public Product Find(int id)
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.SelectById(id);
+            var productDac = new ProductDAC();
+            var result = productDac.SelectById(id);
             return result;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="client"></param>
-        public void Edit(Client client)
+        /// <param name="category"></param>
+        public void Edit(Product product)
         {
-            var clientDac = new ClientDAC();
-            clientDac.UpdateById(client);
+            var productDac = new ProductDAC();
+            productDac.UpdateById(product);
         }
     }
 }

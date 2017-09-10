@@ -8,14 +8,14 @@ using ASF.Data;
 
 namespace ASF.Business
 {
-    public class ClientBusiness
+    public class OrderBusiness
     {
-        /// <param name="client"></param>
+        /// <param name="category"></param>
         /// <returns></returns>
-        public Client Add(Client client)
+        public Order Add(Order order)
         {
-            var clientDac = new ClientDAC();
-            return clientDac.Create(client);
+            var orderDac = new OrderDAC();
+            return orderDac.Create(order);
         }
 
         /// <summary>
@@ -24,18 +24,18 @@ namespace ASF.Business
         /// <param name="id"></param>
         public void Remove(int id)
         {
-            var clientDac = new ClientDAC();
-            clientDac.DeleteById(id);
+            var orderDac = new OrderDAC();
+            orderDac.DeleteById(id);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Client> All()
+        public List<Order> All()
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.Select();
+            var orderDac = new OrderDAC();
+            var result = orderDac.Select();
             return result;
         }
 
@@ -44,21 +44,21 @@ namespace ASF.Business
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Client Find(int id)
+        public Order Find(int id)
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.SelectById(id);
+            var orderDac = new OrderDAC();
+            var result = orderDac.SelectById(id);
             return result;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="client"></param>
-        public void Edit(Client client)
+        /// <param name="order"></param>
+        public void Edit(Order order)
         {
-            var clientDac = new ClientDAC();
-            clientDac.UpdateById(client);
+            var orderDac = new OrderDAC();
+            orderDac.UpdateById(order);
         }
     }
 }

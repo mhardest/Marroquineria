@@ -8,14 +8,14 @@ using ASF.Data;
 
 namespace ASF.Business
 {
-    public class ClientBusiness
+    public class RatingBusiness
     {
-        /// <param name="client"></param>
+        /// <param name="rating"></param>
         /// <returns></returns>
-        public Client Add(Client client)
+        public Rating Add(Rating rating)
         {
-            var clientDac = new ClientDAC();
-            return clientDac.Create(client);
+            var ratingDac = new RatingDAC();
+            return ratingDac.Create(rating);
         }
 
         /// <summary>
@@ -24,18 +24,18 @@ namespace ASF.Business
         /// <param name="id"></param>
         public void Remove(int id)
         {
-            var clientDac = new ClientDAC();
-            clientDac.DeleteById(id);
+            var ratingDac = new RatingDAC();
+            ratingDac.DeleteById(id);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Client> All()
+        public List<Rating> All()
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.Select();
+            var ratingDac = new RatingDAC();
+            var result = ratingDac.Select();
             return result;
         }
 
@@ -44,21 +44,21 @@ namespace ASF.Business
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Client Find(int id)
+        public Rating Find(int id)
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.SelectById(id);
+            var ratingDac = new RatingDAC();
+            var result = ratingDac.SelectById(id);
             return result;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="client"></param>
-        public void Edit(Client client)
+        /// <param name="rating"></param>
+        public void Edit(Rating rating)
         {
-            var clientDac = new ClientDAC();
-            clientDac.UpdateById(client);
+            var ratingDac = new RatingDAC();
+            ratingDac.UpdateById(rating);
         }
     }
 }

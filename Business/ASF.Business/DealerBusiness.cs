@@ -8,14 +8,14 @@ using ASF.Data;
 
 namespace ASF.Business
 {
-    public class ClientBusiness
+    public class DealerBusiness
     {
-        /// <param name="client"></param>
+        /// <param name="dealer"></param>
         /// <returns></returns>
-        public Client Add(Client client)
+        public Dealer Add(Dealer dealer)
         {
-            var clientDac = new ClientDAC();
-            return clientDac.Create(client);
+            var dealerDac = new DealerDAC();
+            return dealerDac.Create(dealer);
         }
 
         /// <summary>
@@ -24,18 +24,18 @@ namespace ASF.Business
         /// <param name="id"></param>
         public void Remove(int id)
         {
-            var clientDac = new ClientDAC();
-            clientDac.DeleteById(id);
+            var dealerDac = new DealerDAC();
+            dealerDac.DeleteById(id);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Client> All()
+        public List<Dealer> All()
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.Select();
+            var dealerDac = new DealerDAC();
+            var result = dealerDac.Select();
             return result;
         }
 
@@ -44,21 +44,21 @@ namespace ASF.Business
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Client Find(int id)
+        public Dealer Find(int id)
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.SelectById(id);
+            var dealerDac = new DealerDAC();
+            var result = dealerDac.SelectById(id);
             return result;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="client"></param>
-        public void Edit(Client client)
+        /// <param name="dealer"></param>
+        public void Edit(Dealer dealer)
         {
-            var clientDac = new ClientDAC();
-            clientDac.UpdateById(client);
+            var dealerDac = new DealerDAC();
+            dealerDac.UpdateById(dealer);
         }
     }
 }

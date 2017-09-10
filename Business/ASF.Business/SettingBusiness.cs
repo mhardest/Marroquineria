@@ -8,14 +8,14 @@ using ASF.Data;
 
 namespace ASF.Business
 {
-    public class ClientBusiness
+    public class SettingBusiness
     {
-        /// <param name="client"></param>
+        /// <param name="setting"></param>
         /// <returns></returns>
-        public Client Add(Client client)
+        public Setting Add(Setting setting)
         {
-            var clientDac = new ClientDAC();
-            return clientDac.Create(client);
+            var settingDac = new SettingDAC();
+            return settingDac.Create(setting);
         }
 
         /// <summary>
@@ -24,18 +24,18 @@ namespace ASF.Business
         /// <param name="id"></param>
         public void Remove(int id)
         {
-            var clientDac = new ClientDAC();
-            clientDac.DeleteById(id);
+            var settingDac = new SettingDAC();
+            settingDac.DeleteById(id);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Client> All()
+        public List<Setting> All()
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.Select();
+            var settingDac = new SettingDAC();
+            var result = settingDac.Select();
             return result;
         }
 
@@ -44,21 +44,21 @@ namespace ASF.Business
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Client Find(int id)
+        public Setting Find(int id)
         {
-            var clientDac = new ClientDAC();
-            var result = clientDac.SelectById(id);
+            var settingDac = new SettingDAC();
+            var result = settingDac.SelectById(id);
             return result;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="client"></param>
-        public void Edit(Client client)
+        /// <param name="setting"></param>
+        public void Edit(Setting setting)
         {
-            var clientDac = new ClientDAC();
-            clientDac.UpdateById(client);
+            var settingDac = new SettingDAC();
+            settingDac.UpdateById(setting);
         }
     }
 }
