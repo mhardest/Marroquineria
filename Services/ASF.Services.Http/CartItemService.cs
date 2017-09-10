@@ -20,17 +20,17 @@ namespace ASF.Services.Http
     /// <summary>
     /// Category HTTP service controller.
     /// </summary>
-    [RoutePrefix("rest/Category")]
-    public class CategoryService : ApiController
+    [RoutePrefix("rest/CartItem")]
+    public class CartItemService : ApiController
     {
         [HttpPost]
         [Route("Add")]
-        public Category Add(Category category)
+        public CartItem Add(CartItem cartitem)
         {
             try
             {
-                var bc = new CategoryBusiness();
-                return bc.Add(category);
+                var bc = new CartItemBusiness();
+                return bc.Add(cartitem);
             }
             catch (Exception ex)
             {
@@ -51,8 +51,8 @@ namespace ASF.Services.Http
             try
             {
                 var response = new AllResponse();
-                var bc = new CategoryBusiness();
-                response.Result = bc.All();
+                var bc = new CartItemBusiness();
+                response.ResultCartItem = bc.All();
                 return response;
             }
             catch (Exception ex)
@@ -69,12 +69,12 @@ namespace ASF.Services.Http
 
         [HttpPut]
         [Route("Edit")]
-        public void Edit(Category category)
+        public void Edit(CartItem cartitem)
         {
             try
             {
-                var bc = new CategoryBusiness();
-                bc.Edit(category);
+                var bc = new CartItemBusiness();
+                bc.Edit(cartitem);
             }
             catch (Exception ex)
             {
@@ -96,8 +96,8 @@ namespace ASF.Services.Http
             try
             {
                 var response = new FindResponse();
-                var bc = new CategoryBusiness();
-                response.Result = bc.Find(id);
+                var bc = new CartItemBusiness();
+                response.ResultCartItem = bc.Find(id);
                 return response;
             }
             catch (Exception ex)
@@ -118,7 +118,7 @@ namespace ASF.Services.Http
         {
             try
             {
-                var bc = new CategoryBusiness();
+                var bc = new CartItemBusiness();
                 bc.Remove(id);
             }
             catch (Exception ex)

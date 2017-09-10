@@ -20,6 +20,39 @@ namespace ASF.Services.Contracts
     {
         [DataMember]
         public Category Result { get; set; }
+
+        [DataMember]
+        public Client ResultClient { get; set; }
+
+        [DataMember]
+        public Cart ResultCart { get; set; }
+
+        [DataMember]
+        public CartItem ResultCartItem { get; set; }
+
+        [DataMember]
+        public Country ResultCountry { get; set; }
+
+        [DataMember]
+        public Dealer ResultDealer { get; set; }
+
+        [DataMember]
+        public OrderDetail ResultOrderDetail { get; set; }
+
+        [DataMember]
+        public OrderNumber ResultNumber { get; set; }
+
+        [DataMember]
+        public Order ResultOrder { get; set; }
+
+        [DataMember]
+        public Product ResultProduct { get; set; }
+
+        [DataMember]
+        public Rating ResultRating { get; set; }
+
+        [DataMember]
+        public Setting ResultSetting { get; set; }
     }
 }
 

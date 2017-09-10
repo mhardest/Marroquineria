@@ -8,7 +8,7 @@ using ASF.Data;
 
 namespace ASF.Business
 {
-    public class CartBusniess
+    public class CartBusiness
     {
         /// <param name="cart"></param>
         /// <returns></returns>

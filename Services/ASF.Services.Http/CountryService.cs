@@ -20,17 +20,17 @@ namespace ASF.Services.Http
     /// <summary>
     /// Category HTTP service controller.
     /// </summary>
-    [RoutePrefix("rest/Category")]
-    public class CategoryService : ApiController
+    [RoutePrefix("rest/Country")]
+    public class CountryService : ApiController
     {
         [HttpPost]
         [Route("Add")]
-        public Category Add(Category category)
+        public Country Add(Country country)
         {
             try
             {
-                var bc = new CategoryBusiness();
-                return bc.Add(category);
+                var bc = new CountryBusiness();
+                return bc.Add(country);
             }
             catch (Exception ex)
             {
@@ -51,8 +51,8 @@ namespace ASF.Services.Http
             try
             {
                 var response = new AllResponse();
-                var bc = new CategoryBusiness();
-                response.Result = bc.All();
+                var bc = new CountryBusiness();
+                response.ResultCountry = bc.All();
                 return response;
             }
             catch (Exception ex)
@@ -69,12 +69,12 @@ namespace ASF.Services.Http
 
         [HttpPut]
         [Route("Edit")]
-        public void Edit(Category category)
+        public void Edit(Country country)
         {
             try
             {
-                var bc = new CategoryBusiness();
-                bc.Edit(category);
+                var bc = new CountryBusiness();
+                bc.Edit(country);
             }
             catch (Exception ex)
             {
@@ -96,8 +96,8 @@ namespace ASF.Services.Http
             try
             {
                 var response = new FindResponse();
-                var bc = new CategoryBusiness();
-                response.Result = bc.Find(id);
+                var bc = new CountryBusiness();
+                response.ResultCountry = bc.Find(id);
                 return response;
             }
             catch (Exception ex)
@@ -118,7 +118,7 @@ namespace ASF.Services.Http
         {
             try
             {
-                var bc = new CategoryBusiness();
+                var bc = new CountryBusiness();
                 bc.Remove(id);
             }
             catch (Exception ex)

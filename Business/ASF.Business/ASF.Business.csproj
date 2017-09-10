@@ -40,14 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CartBusniess.cs" />
+    <Compile Include="CartBusiness.cs" />
     <Compile Include="CartItemBusiness.cs" />
     <Compile Include="CategoryBusiness.cs" />
     <Compile Include="ClientBusiness.cs" />
     <Compile Include="CountryBusiness.cs" />
     <Compile Include="DealerBusiness.cs" />
     <Compile Include="OrderBusiness.cs" />
-    <Compile Include="OrderNumber.cs" />
+    <Compile Include="OrderNumberBusiness.cs" />
     <Compile Include="OrderDetailBusiness.cs" />
     <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
