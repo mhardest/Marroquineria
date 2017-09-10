@@ -17,7 +17,7 @@ namespace ASF.Data
         public Client Create(Client client)
         {
             const string sqlStatement = "INSERT INTO dbo.Client ([First Name], [Last Name], [Email] ,[Country Id], [Asp Net Users], [City],[Signup Date], [Rowid],  [Order Count], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Name, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+                "VALUES(@FirstName, @LastName, @Email, @CountryId, @AspNetUsers, @City, @SignupDate, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -25,12 +25,12 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@FirstName", DbType.String, client.FirstName);
                 db.AddInParameter(cmd, "@LastName", DbType.String, client.LastName);
                 db.AddInParameter(cmd, "@Email", DbType.String, client.Email);
-                db.AddInParameter(cmd, "@CountryId", DbType.String, client.CountryId);
+                db.AddInParameter(cmd, "@CountryId", DbType.Int32, client.CountryId);
                 db.AddInParameter(cmd, "@AspNetUsers", DbType.String, client.AspNetUsers);
                 db.AddInParameter(cmd, "@City", DbType.String, client.City);
-                db.AddInParameter(cmd, "@Signup Date", DbType.String, client.SignupDate);
-                db.AddInParameter(cmd, "@Rowid", DbType.String, client.Rowid);
-                db.AddInParameter(cmd, "@OrderCount", DbType.String, client.OrderCount);
+                db.AddInParameter(cmd, "@Signup Date", DbType.DateTime2, client.SignupDate);
+                db.AddInParameter(cmd, "@Rowid", DbType.Guid, client.Rowid);
+                db.AddInParameter(cmd, "@OrderCount", DbType.Int32, client.OrderCount);
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, client.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, client.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, client.ChangedOn);

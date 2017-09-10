@@ -14,7 +14,7 @@ namespace ASF.Data
         public Cart Create(Cart cart)
         {
             const string sqlStatement = "INSERT INTO dbo.Cart ([Cookie],[Cart Date], [Item Count], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Name, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+                "VALUES(@Cookie, @CartDate, @ItemCount, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
