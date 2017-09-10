@@ -50,6 +50,7 @@
     <Compile Include="CartDAC.cs" />
     <Compile Include="CategoryDAC.cs" />
     <Compile Include="ClientDAC.cs" />
+    <Compile Include="CountryDAC.cs" />
     <Compile Include="DataAccessComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
