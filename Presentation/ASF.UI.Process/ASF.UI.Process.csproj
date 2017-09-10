@@ -63,6 +63,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SettingProcess.cs" />
+    <Compile Include="ProductProcess.cs" />
+    <Compile Include="RatingProcess.cs" />
+    <Compile Include="OrderNumberProcess.cs" />
+    <Compile Include="OrderDetailProcess.cs" />
+    <Compile Include="OrderProcess.cs" />
+    <Compile Include="DealerProcess.cs" />
+    <Compile Include="CountryProcess.cs" />
+    <Compile Include="ClientProcess.cs" />
+    <Compile Include="CartProcess.cs" />
+    <Compile Include="CartItemProcess.cs" />
     <Compile Include="CategoryProcess.cs" />
     <Compile Include="MediaType.cs" />
     <Compile Include="ProcessComponent.cs" />
