@@ -9,7 +9,7 @@ using ASF.Entities;
 
 namespace ASF.Data
 {
-    class SettingDAC : DataAccessComponent
+    public class SettingDAC : DataAccessComponent
     {
         /// <param name="setting"></param>
         /// <returns></returns>

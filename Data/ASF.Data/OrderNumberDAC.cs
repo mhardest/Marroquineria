@@ -9,7 +9,7 @@ using ASF.Entities;
 
 namespace ASF.Data
 {
-    class OrderNumberDAC : DataAccessComponent
+    public class OrderNumberDAC : DataAccessComponent
     {
         /// <param name="ordernumber"></param>
         /// <returns></returns>
