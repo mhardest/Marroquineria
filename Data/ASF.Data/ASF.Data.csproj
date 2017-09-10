@@ -60,6 +60,7 @@
     <Compile Include="ProductDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingDAC.cs" />
+    <Compile Include="SettingDAC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
