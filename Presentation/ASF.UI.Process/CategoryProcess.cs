@@ -15,6 +15,7 @@ namespace ASF.UI.Process
 {
     public class CategoryProcess : ProcessComponent
     {
+        const string baseURL = "rest/Category/";
         /// <summary>
         /// 
         /// </summary>
@@ -23,6 +24,16 @@ namespace ASF.UI.Process
         {
             var response = HttpGet<AllResponse>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
+        }
+
+        public void Add(Category category)
+        {
+            var response = HttpPost<Category>(baseURL + "Add/", category, MediaType.Json);
+        }
+
+        public void Edit(Category category)
+        {
+            var response = HttpPost<Category>(baseURL + "Edit/", category, MediaType.Json);
         }
     }
 }
