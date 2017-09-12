@@ -409,6 +409,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Categories\Views\Category\Create.cshtml" />
     <Content Include="Areas\Categories\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Categories\Views\Category\Delete.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -41,5 +41,10 @@ namespace ASF.UI.Process
             var response = HttpGet<FindResponse>(baseURL + "Find/", new Dictionary<string, object>() { { "id", id} }, MediaType.Json);
             return response.Result;
         }
+
+        public void Delete(Category category)
+        {
+            var response = HttpGet<FindResponse>(baseURL + "Remove/" + category.Id, new Dictionary<string, object>() , MediaType.Json);
+        }
     }
 }
