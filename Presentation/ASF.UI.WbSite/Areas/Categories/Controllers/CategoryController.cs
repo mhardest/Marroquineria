@@ -31,5 +31,21 @@ namespace ASF.UI.WbSite.Areas.Categories.Controllers
             cp.Add(category);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var cp = new CategoryProcess();
+            var category = cp.FindById(id);
+            return View(category);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Category category)
+        {
+            var cp = new CategoryProcess();
+            cp.Edit(category);
+            return RedirectToAction("Index");
+        }
     }
 }

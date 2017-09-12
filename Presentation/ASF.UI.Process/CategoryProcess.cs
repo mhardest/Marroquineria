@@ -35,5 +35,11 @@ namespace ASF.UI.Process
         {
             var response = HttpPost<Category>(baseURL + "Edit/", category, MediaType.Json);
         }
+
+        public Category FindById(int id)
+        {
+            var response = HttpGet<FindResponse>(baseURL + "Find/", new Dictionary<string, object>() { { "id", id} }, MediaType.Json);
+            return response.Result;
+        }
     }
 }
