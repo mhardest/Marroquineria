@@ -22,7 +22,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<Category> SelectList()
         {
-            var response = HttpGet<AllResponse>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponse>(baseURL + "All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
