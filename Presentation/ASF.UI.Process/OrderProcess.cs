@@ -15,14 +15,36 @@ namespace ASF.UI.Process
 {
     public class OrderProcess : ProcessComponent
     {
+        const string baseURL = "rest/Order/";
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public List<Order> SelectList()
         {
-            var response = HttpGet<AllResponse>("rest/Order/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponse>(baseURL + "All", new Dictionary<string, object>(), MediaType.Json);
             return response.ResultOrder;
+        }
+
+        public void Add(Order order)
+        {
+            var response = HttpPost<Order>(baseURL + "Add/", order, MediaType.Json);
+        }
+
+        public void Edit(Order order)
+        {
+            var response = HttpPost<Order>(baseURL + "Edit/", order, MediaType.Json);
+        }
+
+        public Order FindById(int id)
+        {
+            var response = HttpGet<FindResponse>(baseURL + "Find/", new Dictionary<string, object>() { { "id", id } }, MediaType.Json);
+            return response.ResultOrder;
+        }
+
+        public void Delete(Order order)
+        {
+            var response = HttpGet<FindResponse>(baseURL + "Remove/" + order.Id, new Dictionary<string, object>(), MediaType.Json);
         }
     }
 }

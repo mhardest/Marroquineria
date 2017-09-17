@@ -19,10 +19,36 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
+        const string baseURL = "rest/Client/";
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Client> SelectList()
         {
-            var response = HttpGet<AllResponse>("rest/Client/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponse>(baseURL + "All", new Dictionary<string, object>(), MediaType.Json);
             return response.ResultClient;
+        }
+
+        public void Add(Client client)
+        {
+            var response = HttpPost<Client>(baseURL + "Add/", client, MediaType.Json);
+        }
+
+        public void Edit(Client client)
+        {
+            var response = HttpPost<Client>(baseURL + "Edit/", client, MediaType.Json);
+        }
+
+        public Client FindById(int id)
+        {
+            var response = HttpGet<FindResponse>(baseURL + "Find/", new Dictionary<string, object>() { { "id", id } }, MediaType.Json);
+            return response.ResultClient;
+        }
+
+        public void Delete(Client client)
+        {
+            var response = HttpGet<FindResponse>(baseURL + "Remove/" + client.Id, new Dictionary<string, object>(), MediaType.Json);
         }
     }
 }
