@@ -16,7 +16,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Client Create(Client client)
         {
-            const string sqlStatement = "INSERT INTO dbo.Client ([First Name], [Last Name], [Email] ,[Country Id], [Asp Net Users], [City],[Signup Date], [Rowid],  [Order Count], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+            const string sqlStatement = "INSERT INTO dbo.Client ([FirstName], [LastName], [Email] ,[CountryId], [AspNetUsers], [City],[SignupDate], [Rowid],  [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
                 "VALUES(@FirstName, @LastName, @Email, @CountryId, @AspNetUsers, @City, @SignupDate, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -106,7 +106,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Client SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Id], [First Name], [Last Name], [Email] ,[Country Id], [Asp Net Users], [City],[Signup Date], [Rowid],  [Order Count], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [Email] ,[CountryId], [AspNetUsers], [City],[SignupDate], [Rowid],  [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.Client WHERE [Id]=@Id ";
 
             Client client = null;
@@ -130,7 +130,7 @@ namespace ASF.Data
         public List<Client> Select()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [First Name], [Last Name], [Email] ,[Country Id], [Asp Net Users], [City],[Signup Date], [Rowid],  [Order Count], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Client ";
+            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [Email] ,[CountryId], [AspNetUsers], [City],[SignupDate], [Rowid],  [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Client ";
 
             var result = new List<Client>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
