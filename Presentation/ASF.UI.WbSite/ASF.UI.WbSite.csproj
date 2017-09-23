@@ -239,6 +239,8 @@
   <ItemGroup>
     <Compile Include="Areas\Categories\CategoriesAreaRegistration.cs" />
     <Compile Include="Areas\Categories\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Clients\ClientsAreaRegistration.cs" />
+    <Compile Include="Areas\Clients\Controllers\ClientController.cs" />
     <Compile Include="Areas\Countries\Controllers\CountryController.cs" />
     <Compile Include="Areas\Countries\CountriesAreaRegistration.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
@@ -420,6 +422,13 @@
     <Content Include="Areas\Countries\Views\Country\Create.cshtml" />
     <Content Include="Areas\Countries\Views\Country\Edit.cshtml" />
     <Content Include="Areas\Countries\Views\Country\Delete.cshtml" />
+    <Content Include="Areas\Clients\Views\web.config" />
+    <Content Include="Areas\Clients\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Clients\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Clients\Views\Client\Index.cshtml" />
+    <Content Include="Areas\Clients\Views\Client\Create.cshtml" />
+    <Content Include="Areas\Clients\Views\Client\Edit.cshtml" />
+    <Content Include="Areas\Clients\Views\Client\Delete.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -573,6 +582,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Categories\Models\" />
+    <Folder Include="Areas\Clients\Models\" />
     <Folder Include="Areas\Countries\Models\" />
   </ItemGroup>
   <ItemGroup>
