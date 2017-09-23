@@ -71,7 +71,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@CountryId", DbType.Int32, client.CountryId);
                 db.AddInParameter(cmd, "@AspNetUsers", DbType.String, client.AspNetUsers);
                 db.AddInParameter(cmd, "@City", DbType.String, client.City);
-                db.AddInParameter(cmd, "@SignupDate", DbType.Date, client.SignupDate);
+                db.AddInParameter(cmd, "@SignupDate", DbType.DateTime2, client.SignupDate);
                 db.AddInParameter(cmd, "@Rowid", DbType.Int32, client.Rowid);
                 db.AddInParameter(cmd, "@OrderCount", DbType.Int32, client.OrderCount);
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, client.CreatedOn);
