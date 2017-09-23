@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using ASF.Entities;
+using ASF.UI.Process;
+
+namespace ASF.UI.WbSite.Areas.Orders.Controllers
+{
+    public class OrderController : Controller
+    {
+        // GET: Orders/Order
+        public ActionResult Index()
+        {
+            OrderProcess orderprocess = new OrderProcess();
+            var lista = orderprocess.SelectList();
+            return View(lista);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Order order)
+        {
+            var cp = new OrderProcess();
+            cp.Add(order);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var cp = new OrderProcess();
+            var order = cp.FindById(id);
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Order order)
+        {
+            var cp = new OrderProcess();
+            cp.Edit(order);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var cp = new OrderProcess();
+            var order = cp.FindById(id);
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Order order)
+        {
+            var cp = new OrderProcess();
+            cp.Delete(order);
+            return RedirectToAction("Index");
+        }
+    }
+}

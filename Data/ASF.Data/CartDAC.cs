@@ -13,14 +13,14 @@ namespace ASF.Data
     {
         public Cart Create(Cart cart)
         {
-            const string sqlStatement = "INSERT INTO dbo.Cart ([Cookie],[Cart Date], [Item Count], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+            const string sqlStatement = "INSERT INTO dbo.Cart ([Cookie],[CartDate], [ItemCount], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
                 "VALUES(@Cookie, @CartDate, @ItemCount, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Cookie", DbType.String, cart.Cookie);
-                db.AddInParameter(cmd, "@CartDate", DbType.Date, cart.CartDate);
+                db.AddInParameter(cmd, "@CartDate", DbType.DateTime2, cart.CartDate);
                 db.AddInParameter(cmd, "@ItemCount", DbType.Int32, cart.ItemCount);
                 db.AddInParameter(cmd, "@Rowid", DbType.Int32, cart.Rowid);
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, cart.CreatedOn);
@@ -38,7 +38,7 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Cart " +
                 "SET [Cookie]=@Cookie, " +
-                    "[Cart Date]=@CartDate, " + 
+                    "[CartDate]=@CartDate, " + 
                     "[Item Count]=@ItemCount, " + 
                     "[Rowid]=@Rowid, " +
                     "[CreatedOn]=@CreatedOn, " +
@@ -51,7 +51,7 @@ namespace ASF.Data
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Cookie", DbType.String, cart.Cookie);
-                db.AddInParameter(cmd, "@CartDate", DbType.Date, cart.CartDate);
+                db.AddInParameter(cmd, "@CartDate", DbType.DateTime2, cart.CartDate);
                 db.AddInParameter(cmd, "@ItemCount", DbType.Int32, cart.ItemCount);
                 db.AddInParameter(cmd, "@Rowid", DbType.Int32, cart.Rowid);
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, cart.CreatedOn);
@@ -86,7 +86,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Cart SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Id], [Cookie],[Cart Date], [Item Count], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [Cookie],[CartDate], [ItemCount], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.Cart WHERE [Id]=@Id ";
 
             Cart cart = null;
@@ -110,7 +110,7 @@ namespace ASF.Data
         public List<Cart> Select()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [Cookie], [Cart Date], [Item Count], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Client ";
+            const string sqlStatement = "SELECT [Id], [Cookie], [CartDate], [ItemCount], [Rowid] , [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Client ";
 
             var result = new List<Cart>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -140,7 +140,7 @@ namespace ASF.Data
             {
                 Id = GetDataValue<int>(dr, "Id"),
                 Cookie = GetDataValue<string>(dr, "Cookie"),
-                CartDate = GetDataValue<DateTime>(dr, "Cart Date"),
+                CartDate = GetDataValue<DateTime>(dr, "CartDate"),
                 ItemCount = GetDataValue<int>(dr, "Item Count"),
                 Rowid = GetDataValue<Guid>(dr, "Rowid"),
                 CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),

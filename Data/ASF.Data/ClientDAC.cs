@@ -47,8 +47,8 @@ namespace ASF.Data
         public void UpdateById(Client client)
         {
             const string sqlStatement = "UPDATE dbo.Client " +
-                "SET [First Name]=@FirstName, " +
-                    "[Last Name]=@LastName, " +
+                "SET [FirstName]=@FirstName, " +
+                    "[LastName]=@LastName, " +
                     "[Email]=@Email, " +
                     "[CountryId]=@CountryId, " +
                     "[AspNetUsers]=@AspNetUsers, " +

@@ -16,7 +16,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Product Create(Product product)
         {
-            const string sqlStatement = "INSERT INTO dbo.Product ([Title],[Description] ,[Dealer Id],[Image],[Price],[Quantity Sold],[Avg Stars],[Rowid],[CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+            const string sqlStatement = "INSERT INTO dbo.Product ([Title],[Description] ,[DealerId],[Image],[Price],[QuantitySold],[AvgStars],[Rowid],[CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
                 "VALUES(@Title, @Description, @DealerId, @Image, @Price, @QuantitySold, @AvgStars, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -102,7 +102,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Product SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Id], [Title],[Description] ,[Dealer Id],[Image],[Price],[Quantity Sold],[Avg Stars],[Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [Title],[Description] ,[DealerId],[Image],[Price],[QuantitySold],[AvgStars],[Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.Product WHERE [Id]=@Id ";
 
             Product product = null;
@@ -126,7 +126,7 @@ namespace ASF.Data
         public List<Product> Select()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [Title],[Description] ,[Dealer Id],[Image],[Price],[Quantity Sold],[Avg Stars],[Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Product ";
+            const string sqlStatement = "SELECT [Id], [Title],[Description] ,[DealerId],[Image],[Price],[QuantitySold],[AvgStars],[Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Product ";
 
             var result = new List<Product>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
