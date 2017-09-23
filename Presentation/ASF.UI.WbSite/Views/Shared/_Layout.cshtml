@@ -1,4 +1,5 @@
 ﻿@using ASF.UI.WbSite.Constants.HomeController
+
 <!DOCTYPE html>
 @* lang - The language of the page. *@
 @* no-js - The no JavaScript class is removed by modernizr if JavaScript is available. *@
@@ -171,6 +172,24 @@
                     <li><a href="@Url.RouteUrl(HomeControllerRoute.GetAbout)"><span aria-hidden="true" class="fa fa-users"></span> About</a></li>
                     <li><a href="@Url.RouteUrl(HomeControllerRoute.GetContact)"><span aria-hidden="true" class="fa fa-phone"></span> Contact</a></li>
                     <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><span aria-hidden="true" class="fa fa-rss"></span> RSS</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown"><span aria-hidden="true" class="fa fa-cogs"></span> ABM <span aria-hidden="true" class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Cart</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> CartItem</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Category</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Client</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Country</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Dealer</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Order</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> OrderDetail</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> OrderNumber</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Product</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Rating</a></li>
+                            <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Setting</a></li>
+                        </ul>
+                    </li>
+
                     @if (HttpContext.Current.IsDebuggingEnabled)
                     {
                         // if <compilation debug="true"> is set in Web.config.
