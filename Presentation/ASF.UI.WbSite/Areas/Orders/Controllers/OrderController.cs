@@ -8,8 +8,10 @@ using ASF.UI.Process;
 
 namespace ASF.UI.WbSite.Areas.Orders.Controllers
 {
+
     public class OrderController : Controller
     {
+        
         // GET: Orders/Order
         public ActionResult Index()
         {
@@ -63,5 +65,18 @@ namespace ASF.UI.WbSite.Areas.Orders.Controllers
             cp.Delete(order);
             return RedirectToAction("Index");
         }
+
+        #region Create jquery - autocomplete
+
+        ClientProcess clientprocess = new ClientProcess();
+
+        public JsonResult GetClients(string Areas, string term = "")
+        {
+            var empleados = from Client in clientprocess.SelectList()
+                            where Client.LastName.StartsWith(term)
+                            select new { Client.LastName, Client.FirstName, Client.Id };
+            return Json(empleados, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
 }

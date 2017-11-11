@@ -18,6 +18,14 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
             return View(lista);
         }
 
+        
+        public ActionResult Index2()
+        {
+            ProductProcess productprocess = new ProductProcess();
+            var lista = productprocess.SelectList();
+            return View(lista);
+        }
+
         [HttpGet]
         public ActionResult Create()
         {

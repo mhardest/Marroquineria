@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "AgregarCarrito";
+}
+
+<h2>Mi Carrito</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            double total = 0;
+        }
+        @if (Session["carrito"] != null)
+        {
+            foreach (var item in Session["carrito"] as List<ASF.Entities.CartItem>)
+            {
+                total += (double)(item.Quantity * 100);
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductId</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.ProductId</td>
+                    <td>@Html.ActionLink("Eliminar", "Borrar", "CartItem", new { @area = "CartItems", Id = item.ProductId }, null)</td>
+                </tr>
+            }
+
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="4">Total</th>
+            <th>@string.Format("{0:C}",total)</th>
+        </tr>
+    </tfoot>
+</table>
+@Html.ActionLink("Seguir Comprando", "Index2", "Product", new { @area = "Products" },null )
+

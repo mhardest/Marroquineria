@@ -125,7 +125,7 @@ namespace ASF.Data
         public List<Order> Select()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Category ";
+            const string sqlStatement = "SELECT [Id], [ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM [dbo].[Order] ";
 
             var result = new List<Order>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -142,6 +142,7 @@ namespace ASF.Data
             }
 
             return result;
+           
         }
 
         /// <summary>

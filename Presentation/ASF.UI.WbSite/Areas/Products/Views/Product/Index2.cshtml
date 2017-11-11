@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Productos";
+}
+@model  IEnumerable<ASF.Entities.Product>
+
+<h2>Productos</h2>
+@if (Model != null)
+{
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Description</td>
+                <td>@String.Format("{0:C}",item.Price)</td>
+                <td>@Html.ActionLink("Agregar", "AgregarCarrito", "CartItem", new {@area = "CartItems" , Id=item.Id}, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
