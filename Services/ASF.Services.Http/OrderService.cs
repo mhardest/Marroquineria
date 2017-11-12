@@ -113,6 +113,30 @@ namespace ASF.Services.Http
         }
 
         [HttpGet]
+        /*[Route("Find/{id}")]*/
+        [Route("FindMax")]
+        public FindResponse FindMax()
+        {
+            try
+            {
+                var response = new FindResponse();
+                var bc = new OrderBusiness();
+                response.ResultOrderMax = bc.FindMax();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+        [HttpGet]
         [Route("Remove/{id}")]
         public void Remove(int id)
         {

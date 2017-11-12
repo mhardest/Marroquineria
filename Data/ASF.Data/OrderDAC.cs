@@ -15,7 +15,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Order Create(Order order)
         {
-            const string sqlStatement = "INSERT INTO dbo.Order ([ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+            const string sqlStatement = "INSERT INTO [dbo].[Order] ([ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
                 "VALUES(@ClientId, @OrderDate, @TotalPrice, @State, @OrderNumber, @ItemCount, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -118,6 +118,24 @@ namespace ASF.Data
             return order;
         }
 
+        public int SelectMax()
+        {
+            const string sqlStatement = "SELECT Id=Max([Id]) FROM[dbo].[Order]";
+
+            var result = 0;
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read()) result = LoadId(dr);
+
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -168,6 +186,12 @@ namespace ASF.Data
                 ChangedBy = GetDataValue<int>(dr, "ChangedBy")
             };
             return order;
+        }
+        private static int LoadId(IDataReader dr)
+        {
+            var result = GetDataValue<int>(dr, "Id");
+            
+            return result;
         }
     }
 }

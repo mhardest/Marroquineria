@@ -29,6 +29,7 @@ namespace ASF.UI.Process
         public void Add(Order order)
         {
             var response = HttpPost<Order>(baseURL + "Add/", order, MediaType.Json);
+            
         }
 
         public void Edit(Order order)
@@ -40,6 +41,12 @@ namespace ASF.UI.Process
         {
             var response = HttpGet<FindResponse>(baseURL + "Find/", new Dictionary<string, object>() { { "id", id } }, MediaType.Json);
             return response.ResultOrder;
+        }
+
+        public int FindMax()
+        {
+            var response = HttpGet<FindResponse>(baseURL + "FindMax/", new Dictionary<string, object>(), MediaType.Json);
+            return response.ResultOrderMax;
         }
 
         public void Delete(Order order)

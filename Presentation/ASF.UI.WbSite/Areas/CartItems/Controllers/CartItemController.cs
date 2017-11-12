@@ -89,7 +89,41 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
             return View("AgregarCarrito");
         }
 
+        [HttpGet]
+        public ActionResult FinalizaCompra()
+        {
+            List<CartItem> compras = (List<CartItem>)Session["carrito"];
+            if (compras != null && compras.Count > 0)
+            {
+                Order NuevaOrden = new Order();
+                NuevaOrden.OrderDate = DateTime.Now;
+                NuevaOrden.TotalPrice = compras.Sum(x =>  100 * x.Quantity);
+                NuevaOrden.ItemCount = compras.Count;
+                NuevaOrden.ClientId = 6275;
+                NuevaOrden.OrderNumber = 122;
+                NuevaOrden.ChangedOn = DateTime.Now;
+                NuevaOrden.CreatedOn = DateTime.Now;
 
+                var cp = new OrderProcess();
+                cp.Add(NuevaOrden);
+
+                var cpMax = new OrderProcess();
+                var ultimoid = cpMax.FindMax();
+
+                OrderDetail NuevaDetalleOrden = new OrderDetail();
+                NuevaDetalleOrden.OrderId = ultimoid;
+                NuevaDetalleOrden.ProductId = 2;
+                NuevaDetalleOrden.Quantity = 1;
+                NuevaDetalleOrden.Price = 100;
+                NuevaDetalleOrden.ChangedOn = DateTime.Now;
+                NuevaDetalleOrden.CreatedOn = DateTime.Now;
+
+                var ODP = new OrderDetailProcess();
+                ODP.Add(NuevaDetalleOrden);
+
+            }
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Edit(int id)

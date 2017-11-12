@@ -51,6 +51,13 @@ namespace ASF.Business
             return result;
         }
 
+        public int FindMax()
+        {
+            var orderDac = new OrderDAC();
+            var result = orderDac.SelectMax();
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

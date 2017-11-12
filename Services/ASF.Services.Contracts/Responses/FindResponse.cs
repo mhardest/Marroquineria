@@ -53,6 +53,9 @@ namespace ASF.Services.Contracts
 
         [DataMember]
         public Setting ResultSetting { get; set; }
+
+        [DataMember]
+        public int ResultOrderMax { get; set; }
     }
 }
 
