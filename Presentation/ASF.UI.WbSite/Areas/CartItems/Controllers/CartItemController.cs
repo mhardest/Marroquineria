@@ -114,12 +114,15 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
             List<CartItem> compras = (List<CartItem>)Session["carrito"];
             if (compras != null && compras.Count > 0)
             {
+                var cpMax = new OrderProcess();
+                var ultimoid = cpMax.FindMax() + 1;
+
                 Order NuevaOrden = new Order();
                 NuevaOrden.OrderDate = DateTime.Now;
                 NuevaOrden.TotalPrice = compras.Sum(x => x.Price * x.Quantity);
                 NuevaOrden.ItemCount = compras.Count;
                 
-                NuevaOrden.OrderNumber = 122;
+                NuevaOrden.OrderNumber = ultimoid;
                 NuevaOrden.ChangedOn = DateTime.Now;
                 NuevaOrden.CreatedOn = DateTime.Now;
                 var emailusuario = User.Identity.Name;
@@ -132,21 +135,18 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
                 var cp = new OrderProcess();
                 cp.Add(NuevaOrden);
 
-                var cpMax = new OrderProcess();
-                var ultimoid = cpMax.FindMax();
-
                 for (int i = 0; i < compras.Count; i++)
                 {
                     OrderDetail NuevaDetalleOrden = new OrderDetail();
-                NuevaDetalleOrden.OrderId = ultimoid;
-                NuevaDetalleOrden.ProductId = compras[i].ProductId;
-                NuevaDetalleOrden.Quantity = compras[i].Quantity;
-                NuevaDetalleOrden.Price = compras[i].Price;
-                NuevaDetalleOrden.ChangedOn = DateTime.Now;
-                NuevaDetalleOrden.CreatedOn = DateTime.Now;
+                    NuevaDetalleOrden.OrderId = ultimoid;
+                    NuevaDetalleOrden.ProductId = compras[i].ProductId;
+                    NuevaDetalleOrden.Quantity = compras[i].Quantity;
+                    NuevaDetalleOrden.Price = compras[i].Price;
+                    NuevaDetalleOrden.ChangedOn = DateTime.Now;
+                    NuevaDetalleOrden.CreatedOn = DateTime.Now;
 
-                var ODP = new OrderDetailProcess();
-                ODP.Add(NuevaDetalleOrden);
+                    var ODP = new OrderDetailProcess();
+                    ODP.Add(NuevaDetalleOrden);
                 }
 
 

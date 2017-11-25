@@ -334,6 +334,8 @@
     <Content Include="Content\icons\android-chrome-96x96.png" />
     <Content Include="Content\icons\atom-icon-48x48.png" />
     <Content Include="Content\icons\atom-logo-96x48.png" />
+    <Content Include="Content\icons\FondoMarroquineria.jpg" />
+    <Content Include="Content\icons\Fondos.jpg" />
     <Content Include="Content\icons\icono-carritodecompra.png" />
     <Content Include="Content\icons\open-graph-1200x630.png" />
     <Content Include="Content\fonts\fontawesome\fontawesome-webfont.woff2" />

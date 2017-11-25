@@ -8,6 +8,7 @@ using ASF.UI.Process;
 
 namespace ASF.UI.WbSite.Areas.Products.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         // GET: Products/Product

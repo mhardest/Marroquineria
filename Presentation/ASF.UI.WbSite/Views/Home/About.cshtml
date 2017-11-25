@@ -1,16 +1,16 @@
 ﻿@using ASF.UI.WbSite.Constants.HomeController
 @{
-    ViewBag.Title = "About";
-    ViewBag.Description = "The Leather Goods about page.";
-    ViewBag.Author = "Victor Hugo Contreras";
+    ViewBag.Title = "Nosotros";
+    ViewBag.Description = "Brutus Inc.";
+    ViewBag.Author = "Matias Martin";
     ViewBag.ReferrerMode = ReferrerMode.OriginWhenCrossOrigin;
-    ViewBag.TwitterCard = new SummaryLargeImageTwitterCard("@VContrerasAR");
+    ViewBag.TwitterCard = new SummaryLargeImageTwitterCard("@Mhardest");
     ViewBag.OpenGraph = new OpenGraphBusiness(
         ViewBag.Title,
         new OpenGraphImage(Url.AbsoluteContent("~/content/icons/open-graph-1200x630.png")) { Height = 630, Type = ContentType.Png, Width = 1200 },
-        new OpenGraphContactData("Jose C. Paz", "Buenos Aires", "Jose C. Paz", "Argentina")
+        new OpenGraphContactData("Mar de Plata", "Buenos Aires", "Mar del Plata", "Argentina")
         {
-            Email = "vcontreras@asf.com",
+            Email = "mmartin@asf.com",
             Phone = "111-222-333-444",
             Website = Url.AbsoluteRouteUrl(HomeControllerRoute.GetIndex)
         },
@@ -26,3 +26,40 @@
 </header>
 
 <p>@ViewBag.Description</p>
+
+<p>
+    Juan. El Hombre. La Pasión. El Sueño.
+</p>
+<p>
+    Inmigrante Europeo, estableció su primer comercio de almacén de suelas en 1906. Auténtico, creativo, dedicado a su trabajo. Su espiritu insipira nuestra visión. Su imagen nutre nuestras generaciones de diseñadores y artesanos por mas de 100 años. Observando nuestro pasado es que forjamos nuestro futuro. Nos obliga a llevar adelante su legado icónico ahora y siempre.
+</p>
+<p>
+    Desde 1911 la empresa familiar lideró la comercialización de materia prima para la industria marroquinera. En el año 1982, la empresa hace su primera incursión en la confección de carteras con diseños vanguardistas y exclusivos. Dichos productos fueron comercializados a través del canal mayorista del sector y como accesorio para distintas marcas de indumentaria.
+</p>
+<p>
+    Dada la gran aceptación en el mercado, la empresa decide comercializar sus productos bajo una marca propia.
+</p>
+
+<p>
+    Así surge Brutus Inc., hoy símbolo de diseño, moda y calidad.
+</p>
+
+<p>
+    Gracias al éxito alcanzado, en el año 1985 se inaugura el primer local en el barrio de Belgrano. Seguidamente, y con el advenimiento de los Shopping Centers, se visualiza el futuro de la marca a través de ese nuevo canal de ventas y en 1990 se abre el “flag ship store” en Alto Palermo, que produce el gran cambio en el reconocimiento de la marca por parte de los consumidores.
+</p>
+
+<p>
+    Se suceden las aperturas de los siguientes locales en Shoppings y paralelamente se fortalece la venta por mayor en locales multimarcas.
+</p>
+<p>
+    En 1995 y como parte de su estrategia de expansión, se comienza a otorgar franquicias, contando hoy con 23 locales de explotación propia y 62 franquicias exclusivas, distribuidas en los principales centros comerciales de todo el país.
+</p>
+<p>
+    Hoy las colecciones incluyen en cada temporada más de 60 líneas de carteras, con tres a cuatro modelos en cada una de ellas, así como billeteras, cinturones, portafolios, valijas, bolsos, paraguas, alhajeros y también una exclusiva línea de calzado.
+</p>
+<p>
+    Se ha linceciado la marca para la producción y venta de lentes, relojes y productos de cosmetica.
+</p>
+<p>
+    Todas las colecciones son de diseño exclusivo siguiendo las tendencias mundiales de la moda, fruto de la asistencia a ferias de materia prima y producto de los principales centros creativos del mundo, para ser luego adaptadas al gusto y modalidades de uso de la mujer argentina.
+</p>
