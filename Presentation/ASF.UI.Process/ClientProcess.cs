@@ -46,6 +46,12 @@ namespace ASF.UI.Process
             return response.ResultClient;
         }
 
+        public Client FindByEmail(string email)
+        {
+            var response = HttpGet<FindResponse>(baseURL + "FindEmail/", new Dictionary<string, object>() { { "email", email } }, MediaType.Json);
+            return response.ResultClient;
+        }
+
         public void Delete(Client client)
         {
             var response = HttpGet<FindResponse>(baseURL + "Remove/" + client.Id, new Dictionary<string, object>(), MediaType.Json);

@@ -14,7 +14,7 @@ namespace ASF.Data
         /// </summary>
         /// <param name="Client"></param>
         /// <returns></returns>
-        public Client Create(Client client)
+        public Client Create2(Client client)
         {
             const string sqlStatement = "INSERT INTO dbo.Client ([FirstName], [LastName], [Email] ,[CountryId], [AspNetUsers], [City],[SignupDate], [Rowid],  [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
                 "VALUES(@FirstName, @LastName, @Email, @CountryId, @AspNetUsers, @City, @SignupDate, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
@@ -29,6 +29,38 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@AspNetUsers", DbType.String, client.AspNetUsers);
                 db.AddInParameter(cmd, "@City", DbType.String, client.City);
                 db.AddInParameter(cmd, "@Signup Date", DbType.DateTime2, client.SignupDate);
+                db.AddInParameter(cmd, "@Rowid", DbType.Guid, client.Rowid);
+                db.AddInParameter(cmd, "@OrderCount", DbType.Int32, client.OrderCount);
+                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, client.CreatedOn);
+                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, client.CreatedBy);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, client.ChangedOn);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, client.ChangedBy);
+                // Obtener el valor de la primary key.
+                client.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
+            }
+
+            return client;
+        }
+
+
+        public Client Create(Client client)
+        {
+            client.CreatedOn = DateTime.Now;
+            client.ChangedOn = DateTime.Now;
+            client.Rowid = new Guid(); 
+            const string sqlStatement = "INSERT INTO dbo.Client ([FirstName], [LastName], [Email], [CountryId], [AspNetUsers], [City], [SignupDate], [Rowid], [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+                "VALUES(@FirstName, @LastName, @Email, @CountryId, @AspNetUsers, @City, @SignupDate, @Rowid, @OrderCount, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@FirstName", DbType.String, client.FirstName);
+                db.AddInParameter(cmd, "@LastName", DbType.String, client.LastName);
+                db.AddInParameter(cmd, "@Email", DbType.String, client.Email);
+                db.AddInParameter(cmd, "@CountryId", DbType.Int32, client.CountryId);
+                db.AddInParameter(cmd, "@AspNetUsers", DbType.String, client.AspNetUsers);
+                db.AddInParameter(cmd, "@City", DbType.String, client.City);
+                db.AddInParameter(cmd, "@SignupDate", DbType.DateTime2, client.SignupDate);
                 db.AddInParameter(cmd, "@Rowid", DbType.Guid, client.Rowid);
                 db.AddInParameter(cmd, "@OrderCount", DbType.Int32, client.OrderCount);
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, client.CreatedOn);
@@ -114,6 +146,25 @@ namespace ASF.Data
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, id);
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read()) client = LoadClient(dr);
+                }
+            }
+
+            return client;
+        }
+
+        public Client SelectByEmail(string email)
+        {
+            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [Email] ,[CountryId], [AspNetUsers], [City],[SignupDate], [Rowid],  [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+                "FROM dbo.Client WHERE [Email]=@Email";
+
+            Client client = null;
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@Email", DbType.String, email);
                 using (var dr = db.ExecuteReader(cmd))
                 {
                     if (dr.Read()) client = LoadClient(dr);

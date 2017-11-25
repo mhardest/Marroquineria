@@ -51,6 +51,13 @@ namespace ASF.Business
             return result;
         }
 
+        public Client FindEmail(string email)
+        {
+            var clientDac = new ClientDAC();
+            var result = clientDac.SelectByEmail(email);
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

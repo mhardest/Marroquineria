@@ -112,6 +112,32 @@ namespace ASF.Services.Http
             }
         }
 
+
+        [HttpGet]
+        /*[Route("Find/{id}")]*/
+        [Route("FindEmail")]
+        public FindResponse FindEmail(string email)
+        {
+            try
+            {
+                var response = new FindResponse();
+                var bc = new ClientBusiness();
+                response.ResultClient = bc.FindEmail(email);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+
         [HttpGet]
         [Route("Remove/{id}")]
         public void Remove(int id)

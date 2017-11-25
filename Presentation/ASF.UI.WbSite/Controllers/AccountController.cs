@@ -10,6 +10,8 @@ using ASF.UI.WbSite.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using ASF.Entities;
+using ASF.UI.Process;
 
 namespace ASF.UI.WbSite.Controllers
 {
@@ -156,6 +158,20 @@ namespace ASF.UI.WbSite.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    Client Cliente = new Client();
+                    Cliente.AspNetUsers = user.Id;
+                    Cliente.FirstName = "Vacio";
+                    Cliente.LastName = "Vacio";
+                    Cliente.CountryId = 1;
+                    Cliente.City = "1";
+                    Cliente.Email = user.Email;
+                    Cliente.CreatedOn = DateTime.Now;
+                    Cliente.ChangedOn = DateTime.Now;
+                    Cliente.SignupDate = DateTime.Now;
+                    Cliente.OrderCount = 0;
+
+                    ClientProcess CP = new ClientProcess();
+                    CP.Add(Cliente);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

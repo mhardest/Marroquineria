@@ -118,10 +118,16 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
                 NuevaOrden.OrderDate = DateTime.Now;
                 NuevaOrden.TotalPrice = compras.Sum(x => x.Price * x.Quantity);
                 NuevaOrden.ItemCount = compras.Count;
-                NuevaOrden.ClientId = 6275;
+                
                 NuevaOrden.OrderNumber = 122;
                 NuevaOrden.ChangedOn = DateTime.Now;
                 NuevaOrden.CreatedOn = DateTime.Now;
+                var emailusuario = User.Identity.Name;
+                var clientproces = new ClientProcess();
+                Client ClienteTest = new Client();
+                ClienteTest = clientproces.FindByEmail(emailusuario);
+                NuevaOrden.ClientId = ClienteTest.Id;
+
 
                 var cp = new OrderProcess();
                 cp.Add(NuevaOrden);
