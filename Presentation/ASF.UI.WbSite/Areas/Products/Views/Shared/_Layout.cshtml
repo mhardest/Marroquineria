@@ -16,20 +16,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("M@RTIN - Marroquineria", "Index3", "Product", new { area = "products" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li><a href='@Url.Action("vercarrito", "cartitem", new { area = "cartitems" })'><img src='@Url.Content("~/Content/icons/icono-carritodecompra.png")' /></a></li>
+
                 </ul>
+                
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; Carrito de Compras - MCGA -  @DateTime.Now.Year</p>
         </footer>
     </div>
 

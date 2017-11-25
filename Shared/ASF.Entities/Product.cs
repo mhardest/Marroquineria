@@ -56,7 +56,7 @@ namespace ASF.Entities
         /// </summary>
         [DataMember]
         [DisplayName("Image")]
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
 
         /// <summary>
         /// 

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ASF.Entities.Product>
+@{
+    ViewBag.Title = "Index";
+
+}
+<html>
+<head>
+
+    <style>
+        .product_view .modal-dialog {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .pre-cost {
+            text-decoration: line-through;
+            color: #a5a5a5;
+        }
+
+        .space-ten {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="container body-content" role="main">
+        <div id="cartContent" class="jumbotron">
+            <p>Productos Disponibles</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4 text-center">
+                    <div class="thumbnail">
+                        <img src="@Url.Action("Images", "Product", new { @area = "Products",id = item.Id })" width="200" height="200" />
+                        <div class="caption">
+                            $
+                            @Html.DisplayFor(modelItem => item.Price)
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                        <div class="ratings">
+                            <p>
+                                @for (int i = 0; i < (item.AvgStars); i++)
+                                {
+                                    <span class="fa fa-star gold"></span>
+
+                                }
+                            </p>
+                        </div>
+                        <div class="space-ten"></div>
+                        <div class="btn-ground text-center">
+                            @Html.ActionLink("Agregar Al Carrito", "AgregarCarrito", "CartItem", new { @area = "CartItems", Id = item.Id, Precio = item.Price, Descripcion = item.Description }, new { @class = "btn btn-success" })
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</body>
+</html>

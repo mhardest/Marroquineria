@@ -25,7 +25,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@Title", DbType.String, product.Title);
                 db.AddInParameter(cmd, "@Description", DbType.String, product.Description);
                 db.AddInParameter(cmd, "@DealerId", DbType.String, product.DealerId);
-                db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
+                db.AddInParameter(cmd, "@Image", DbType.Byte, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.String, product.Price);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.String, product.QuantitySold);
                 db.AddInParameter(cmd, "@AvgStars", DbType.String, product.AvgStars);
@@ -65,7 +65,7 @@ namespace ASF.Data
             {
                 db.AddInParameter(cmd, "@Title", DbType.String, product.Title);
                 db.AddInParameter(cmd, "@Description", DbType.String, product.Description);
-                db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
+                db.AddInParameter(cmd, "@Image", DbType.Byte, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.Double, product.Price);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.Int32, product.QuantitySold);
                 db.AddInParameter(cmd, "@AvgStars", DbType.Double, product.AvgStars);
@@ -158,7 +158,7 @@ namespace ASF.Data
                 Title = GetDataValue<string>(dr, "Title"),
                 Description = GetDataValue<string>(dr, "Description"),
                 DealerId = GetDataValue<int>(dr, "DealerId"),
-                Image = GetDataValue<string>(dr, "Image"),
+                Image = GetDataValue<byte[]>(dr, "Image"),
                 Price = GetDataValue<double>(dr, "Price"),
                 QuantitySold = GetDataValue<int>(dr, "QuantitySold"),
                 AvgStars = GetDataValue<double>(dr, "AvgStars"),

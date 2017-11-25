@@ -34,13 +34,31 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
 
 
         [HttpGet]
-        public ActionResult AgregarCarrito(int id)
+        public ActionResult VerCarrito()
+        {
+            if (Session["carrito"] == null)
+            {
+                
+            }
+            else
+            {
+                List<CartItem> compras = (List<CartItem>)Session["carrito"];
+    
+            }
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult AgregarCarrito(int Id, double Precio, string Descripcion)
         {
             if (Session["carrito"] == null)
             {
                 List<CartItem> compras = new List<CartItem>();
                 CartItem CI = new CartItem();
-                CI.ProductId = id;
+                CI.ProductId = Id;
+                CI.Price = Precio;
+                CI.Descripcion = Descripcion;
                 CI.Quantity = 1;
 
                 compras.Add(CI);
@@ -50,12 +68,14 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
             else
             {
                 List<CartItem> compras = (List<CartItem>)Session["carrito"];
-                int IndexExistente = getIndex(id);
-                
+                int IndexExistente = getIndex(Id);
+
                 if (IndexExistente == -1)
                 {
                     CartItem CI = new CartItem();
-                    CI.ProductId = id;
+                    CI.ProductId = Id;
+                    CI.Price = Precio;
+                    CI.Descripcion = Descripcion;
                     CI.Quantity = 1;
                     compras.Add(CI);
                 }
@@ -63,12 +83,11 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
                 {
                     compras[IndexExistente].Quantity++;
                 }
-    
 
-                Session["carrito"] = compras;
             }
             return View();
         }
+
 
         private int getIndex(int id)
         {
@@ -97,7 +116,7 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
             {
                 Order NuevaOrden = new Order();
                 NuevaOrden.OrderDate = DateTime.Now;
-                NuevaOrden.TotalPrice = compras.Sum(x =>  100 * x.Quantity);
+                NuevaOrden.TotalPrice = compras.Sum(x => x.Price * x.Quantity);
                 NuevaOrden.ItemCount = compras.Count;
                 NuevaOrden.ClientId = 6275;
                 NuevaOrden.OrderNumber = 122;
@@ -110,18 +129,23 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
                 var cpMax = new OrderProcess();
                 var ultimoid = cpMax.FindMax();
 
-                OrderDetail NuevaDetalleOrden = new OrderDetail();
+                for (int i = 0; i < compras.Count; i++)
+                {
+                    OrderDetail NuevaDetalleOrden = new OrderDetail();
                 NuevaDetalleOrden.OrderId = ultimoid;
-                NuevaDetalleOrden.ProductId = 2;
-                NuevaDetalleOrden.Quantity = 1;
-                NuevaDetalleOrden.Price = 100;
+                NuevaDetalleOrden.ProductId = compras[i].ProductId;
+                NuevaDetalleOrden.Quantity = compras[i].Quantity;
+                NuevaDetalleOrden.Price = compras[i].Price;
                 NuevaDetalleOrden.ChangedOn = DateTime.Now;
                 NuevaDetalleOrden.CreatedOn = DateTime.Now;
 
                 var ODP = new OrderDetailProcess();
                 ODP.Add(NuevaDetalleOrden);
+                }
+
 
             }
+            
             return View();
         }
 

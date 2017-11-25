@@ -22,7 +22,7 @@
                 <td>@item.Id</td>
                 <td>@item.Description</td>
                 <td>@String.Format("{0:C}",item.Price)</td>
-                <td>@Html.ActionLink("Agregar", "AgregarCarrito", "CartItem", new {@area = "CartItems" , Id=item.Id}, null)</td>
+                <td>@Html.ActionLink("Agregar", "AgregarCarrito", "CartItem", new {@area = "CartItems" , Id = item.Id , Precio = item.Price, Descripcion = item.Description}, null)</td>
             </tr>
         }
     </tbody>

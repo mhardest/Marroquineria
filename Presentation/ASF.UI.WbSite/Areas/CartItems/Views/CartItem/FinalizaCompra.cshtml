@@ -3,5 +3,21 @@
     ViewBag.Title = "FinalizaCompra";
 }
 
-<h2>Gracias por su compra, espero no recursar la materia.</h2>
+@if (Session["carrito"] != null)
+{
+    <h2>Gracias por su compra, espero no recursar la materia.</h2>
+
+}
+
+@if (Session["carrito"] == null)
+{
+    <h2>Su Carrito de Compras no contenia productos.</h2>
+
+}
+
+@{
+    Session.Remove("carrito");
+}
+
+
 

@@ -334,6 +334,7 @@
     <Content Include="Content\icons\android-chrome-96x96.png" />
     <Content Include="Content\icons\atom-icon-48x48.png" />
     <Content Include="Content\icons\atom-logo-96x48.png" />
+    <Content Include="Content\icons\icono-carritodecompra.png" />
     <Content Include="Content\icons\open-graph-1200x630.png" />
     <Content Include="Content\fonts\fontawesome\fontawesome-webfont.woff2" />
     <Content Include="Content\fonts\FontAwesome.otf" />
@@ -567,6 +568,8 @@
     <Content Include="Areas\Products\Views\Product\Index2.cshtml" />
     <Content Include="Areas\CartItems\Views\CartItem\AgregarCarrito.cshtml" />
     <Content Include="Areas\CartItems\Views\CartItem\FinalizaCompra.cshtml" />
+    <Content Include="Areas\Products\Views\Product\Index3.cshtml" />
+    <Content Include="Areas\CartItems\Views\CartItem\VerCarrito.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
