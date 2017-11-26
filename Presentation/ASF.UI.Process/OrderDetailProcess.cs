@@ -26,12 +26,11 @@ namespace ASF.UI.Process
             return response.ResultOrderDetail;
         }
 
-        public List<OrderDetail> SelectListOrder(int OrderId)
+        public List<OrderDetail> SelectOrderDetail(int OrderId)
         {
             var response = HttpGet<AllResponse>(baseURL + "AllOrder", new Dictionary<string, object>() { { "OrderId", OrderId } }, MediaType.Json);
             return response.ResultOrderDetail;
         }
-
 
         public void Add(OrderDetail orderdetail)
         {

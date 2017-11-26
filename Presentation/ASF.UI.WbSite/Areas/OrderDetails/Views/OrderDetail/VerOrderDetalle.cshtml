@@ -4,11 +4,8 @@
     ViewBag.Title = "VerOrderDetalle";
 }
 
-<h2>VerOrderDetalle</h2>
+<h2>Order detalle</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -22,18 +19,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedBy)
         </th>
         <th></th>
     </tr>
@@ -51,23 +36,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedBy)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

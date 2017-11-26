@@ -29,5 +29,7 @@ namespace ASF.UI.WbSite.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ASF.Entities.Product> Products { get; set; }
     }
 }

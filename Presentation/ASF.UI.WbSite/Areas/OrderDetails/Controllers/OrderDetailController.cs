@@ -18,11 +18,10 @@ namespace ASF.UI.WbSite.Areas.OrderDetails.Controllers
             return View(lista);
         }
 
-
         public ActionResult VerOrderDetalle(int OrderId)
         {
             OrderDetailProcess orderdetailprocess = new OrderDetailProcess();
-            var lista = orderdetailprocess.SelectListOrder(OrderId);
+            var lista = orderdetailprocess.SelectOrderDetail(OrderId);
             return View(lista);
         }
 

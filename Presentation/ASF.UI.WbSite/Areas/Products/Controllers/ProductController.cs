@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASF.Entities;
 using ASF.UI.Process;
+using System.IO;
 
 namespace ASF.UI.WbSite.Areas.Products.Controllers
 {
@@ -27,6 +28,8 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
             return View(lista);
         }
 
+
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -34,9 +37,22 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             var cp = new ProductProcess();
+
+            if (file != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(ms);
+                    byte[] array = ms.GetBuffer();
+
+                    product.Image = array;
+                }
+
+            }
+
             cp.Add(product);
             return RedirectToAction("Index");
         }

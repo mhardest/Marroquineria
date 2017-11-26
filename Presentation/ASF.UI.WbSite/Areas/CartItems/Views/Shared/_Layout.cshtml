@@ -1,40 +1,252 @@
-﻿<!DOCTYPE html>
+﻿@using ASF.UI.WbSite.Constants.HomeController
+<!DOCTYPE html>
 <html>
 <head>
+    <meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
+    @Styles.Render("~/Content/fa")
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Compras - Brutus Inc.</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+            #Nav {
+                text-align: center;
+                background-color: #075E52;
+            }
+
+            #Nav2 {
+                background-color: #075E52;
+                text-align: center;
+            }
+
+            .container-fluid {
+                text-align: center;
+                width: 25cm;
+            }
+
+            .navbar-nav {
+                display: inline-block;
+                float: none;
+                color: white;
+            }
+
+            #a {
+                color: white;
+                font-weight: bold;
+            }
+
+                #a:focus {
+                    color: white;
+                    background-color: #075E52;
+                }
+
+            .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+                background-color: #075E52;
+            }
+
+            .navbar-collapse .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+                background-color: #075E52;
+            }
+
+            /*
+        .navbar-default .navbar-nav > li > a:focus {
+            background-color: black;
+        }*/
+
+            ul.navbar-nav a:hover {
+                color: #fff !important;
+            }
+
+            ul.social-network {
+                list-style: none;
+                display: inline;
+                margin-left: 0 !important;
+                padding: 0;
+            }
+
+                ul.social-network li {
+                    display: inline;
+                    margin: 0 5px;
+                }
+
+
+            /* footer social icons */
+            .social-network a.icoRss:hover {
+                background-color: #F56505;
+            }
+
+            .social-network a.icoFacebook:hover {
+                background-color: #3B5998;
+            }
+
+            .social-network a.icoTwitter:hover {
+                background-color: #33ccff;
+            }
+
+            .social-network a.icoGoogle:hover {
+                background-color: #BD3518;
+            }
+
+            .social-network a.icoVimeo:hover {
+                background-color: #0590B8;
+            }
+
+            .social-network a.icoLinkedin:hover {
+                background-color: #007bb7;
+            }
+
+                .social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+                .social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+                    color: #fff;
+                }
+
+            a.socialIcon:hover, .socialHoverClass {
+                color: #44BCDD;
+            }
+
+            .social-circle li a {
+                display: inline-block;
+                position: relative;
+                margin: 0 auto 0 auto;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                text-align: center;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .social-circle li i {
+                margin: 0;
+                line-height: 50px;
+                text-align: center;
+            }
+
+            .social-circle li a:hover i, .triggeredHover {
+                -moz-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                -ms--transform: rotate(360deg);
+                transform: rotate(360deg);
+                -webkit-transition: all 0.2s;
+                -moz-transition: all 0.2s;
+                -o-transition: all 0.2s;
+                -ms-transition: all 0.2s;
+                transition: all 0.2s;
+            }
+
+            .social-circle i {
+                color: #fff;
+                -webkit-transition: all 0.8s;
+                -moz-transition: all 0.8s;
+                -o-transition: all 0.8s;
+                -ms-transition: all 0.8s;
+                transition: all 0.8s;
+            }
+
+            #social {
+                background-color: #D3D3D3;
+            }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span aria-hidden="true" class="icon-bar"></span>
+                    <span aria-hidden="true" class="icon-bar"></span>
+                    <span aria-hidden="true" class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("M@RTIN - Marroquineria", "Index3", "Product", new { area = "products" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" role="banner" href="@Url.RouteUrl(HomeControllerRoute.GetIndex)"><span class="fa fa-star"></span> Brutus Inc </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetAbout)"><span aria-hidden="true" class="fa fa-users"></span> Nosotros</a></li>
+                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetContact)"><span aria-hidden="true" class="fa fa-phone"></span> Contáctenos</a></li>
+                    <li><a href="/Products/Product/Shop"><span aria-hidden="true" class="fa fa-adn"></span> Comprar</a></li>
+                    <li><a href="/Orders/Order/VerPorCliente"><span aria-hidden="true" class="fa fa-list"></span> Ordenes</a></li>
+                    <li><a href="/CartItems/CartItem/VerCarrito"><span aria-hidden="true" class="fa fa-shopping-cart"></span> Carrito</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><span aria-hidden="true" class="fa fa-rss"></span> RSS</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown"><span aria-hidden="true" class="fa fa-cogs"></span> ABM <span aria-hidden="true" class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/Carts/Cart/Index"><span aria-hidden="true"></span> Cart</a></li>
+                                <li><a href="/CartItems/CartItem/Index"><span aria-hidden="true"></span> CartItem</a></li>
+                                <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Category</a></li>
+                                <li><a href="/Clients/Client/Index"><span aria-hidden="true"></span> Client</a></li>
+                                <li><a href="/Countries/Country/Index"><span aria-hidden="true"></span> Country</a></li>
+                                <li><a href="/Dealers/Dealer/Index"><span aria-hidden="true"></span> Dealer</a></li>
+                                <li><a href="/Orders/Order/Index"><span aria-hidden="true"></span> Order</a></li>
+                                <li><a href="/OrderDetails/OrderDetail/Index"><span aria-hidden="true"></span> OrderDetail</a></li>
+                                <li><a href="/OrderNumbers/OrderNumber/Index"><span aria-hidden="true"></span> OrderNumber</a></li>
+                                <li><a href="/Products/Product/Index"><span aria-hidden="true"></span> Product</a></li>
+                                <li><a href="/Ratings/Rating/Index"><span aria-hidden="true"></span> Rating</a></li>
+                                <li><a href="/Settings/Setting/Index"><span aria-hidden="true"></span> Setting</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin")) //(HttpContext.Current.IsDebuggingEnabled)
+                    {
+                        // if <compilation debug="true"> is set in Web.config.
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown"><span aria-hidden="true" class="fa fa-cogs"></span> Debug <span aria-hidden="true" class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/glimpse.axd"><span aria-hidden="true" class="fa fa-life-ring"></span> Elmah</a></li>
+                                <li><a href="/glimpse.axd"><span aria-hidden="true" class="fa fa-line-chart"></span> Glimpse</a></li>
+                                <li><a href="/trace.axd"><span aria-hidden="true" class="fa fa-heart"></span> Tracing</a></li>
+                            </ul>
+                        </li>
+                    }
+
                 </ul>
+                @Html.Partial("_LoginPartial")
+                @*<form action="@Url.RouteUrl(HomeControllerRoute.GetSearch)" class="navbar-form navbar-right" method="get" role="search">
+                        <div class="input-group">
+                            <input aria-label="Search" class="form-control" maxlength="2048" name="query" placeholder="Search" title="Search" type="text">
+                            <div class="input-group-btn">
+                                <button aria-label="Search" class="btn btn-default" type="submit"><span class="fa fa-search"></span></button>
+                            </div>
+                        </div>
+                    </form>*@
             </div>
         </div>
-    </div>
-
-    <div class="container body-content">
+    </nav>
+    @* div id="main" - The main container for the page. Change this to the HTML5 main tag when it gains more browser support. *@
+    <div id="main" class="container body-content" role="main">
+        <!--[if lt IE 8]>
+            <div class="alert alert-warning" role="alert">
+                <p>You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            </div>
+        <![endif]-->
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <hr>
+        <footer role="contentinfo">
+            <p>&copy; @DateTime.Now.Year - Brutus Inc.</p>
+            <div class="col-md-12">
+                <ul class="social-network social-circle">
+                    <li><a id="social" href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                    <li><a id="social" href="https://www.facebook.com/leomessi/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a id="social" href="https://twitter.com/katyperry" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a id="social" href="http://plus.google.com/+webempresa" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a id="social" href="https://ar.linkedin.com/company/google" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a id="social" href="https://www.youtube.com/user/PewDiePie" class="icoLinkedin" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                    <li><a id="social" href="https://www.instagram.com/selenagomez/?hl=es-la" class="icoLinkedin" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryvalunobtrusive")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

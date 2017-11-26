@@ -8,6 +8,7 @@ using ASF.UI.Process;
 
 namespace ASF.UI.WbSite.Areas.CartItems.Controllers
 {
+    [Authorize]
     public class CartItemController : Controller
     {
         // GET: CartItems/CartItem

@@ -502,7 +502,6 @@
     <Content Include="Areas\Products\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Products\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Products\Views\Product\Index.cshtml" />
-    <Content Include="Areas\Products\Views\Product\Create.cshtml" />
     <Content Include="Areas\Products\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Products\Views\Product\Delete.cshtml" />
     <Content Include="Areas\Ratings\Views\_ViewStart.cshtml" />
@@ -517,6 +516,7 @@
     <Content Include="Areas\Settings\Views\Setting\Create.cshtml" />
     <Content Include="Areas\Settings\Views\Setting\Edit.cshtml" />
     <Content Include="Areas\Settings\Views\Setting\Delete.cshtml" />
+    <Content Include="Content\Matias.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -573,12 +573,14 @@
     <Content Include="Areas\CartItems\Views\CartItem\VerCarrito.cshtml" />
     <Content Include="Areas\Orders\Views\Order\VerPorCliente.cshtml" />
     <Content Include="Areas\OrderDetails\Views\OrderDetail\VerOrderDetalle.cshtml" />
+    <Content Include="Areas\Products\Views\Product\Create.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\FTP.pubxml" />
     <None Include="ReadMe.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
