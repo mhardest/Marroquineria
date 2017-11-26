@@ -67,6 +67,29 @@ namespace ASF.Services.Http
             }
         }
 
+        [HttpGet]
+        [Route("AllCliente")]
+        public AllResponse AllCliente(int ClienteId)
+        {
+            try
+            {
+                var response = new AllResponse();
+                var bc = new OrderBusiness();
+                response.ResultOrder = bc.AllCliente(ClienteId);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
         [HttpPost]
         [Route("Edit")]
         public void Edit(Order order)

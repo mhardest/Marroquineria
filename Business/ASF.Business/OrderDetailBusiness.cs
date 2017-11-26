@@ -39,6 +39,13 @@ namespace ASF.Business
             return result;
         }
 
+        public List<OrderDetail> AllOrder(int OrderId)
+        {
+            var orderdetailDac = new OrderDetailDAC();
+            var result = orderdetailDac.SelectPorOrden(OrderId);
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

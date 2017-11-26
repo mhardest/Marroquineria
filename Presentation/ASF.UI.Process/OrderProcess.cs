@@ -26,6 +26,12 @@ namespace ASF.UI.Process
             return response.ResultOrder;
         }
 
+        public List<Order> SelectListXCliente(int ClienteId)
+        {
+            var response = HttpGet<AllResponse>(baseURL + "AllCliente", new Dictionary<string, object>() { { "ClienteId", ClienteId }}, MediaType.Json);
+            return response.ResultOrder;
+        }
+
         public void Add(Order order)
         {
             var response = HttpPost<Order>(baseURL + "Add/", order, MediaType.Json);

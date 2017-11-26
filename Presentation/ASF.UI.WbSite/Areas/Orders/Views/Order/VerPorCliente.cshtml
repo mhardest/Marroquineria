@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ASF.Entities.Order>
+
+@{
+    ViewBag.Title = "Ordenes del Cliente";
+}
+
+<h2>Ordenes del Cliente</h2>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCount)
+        </td>
+        <td>
+        <td>
+            @Html.ActionLink("Detalle", "VerOrderDetalle", "OrderDetail", new { @area = "OrderDetails", OrderId = item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>

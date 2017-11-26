@@ -163,6 +163,29 @@ namespace ASF.Data
            
         }
 
+        public List<Order> ListaCliente(int ClienteId)
+        {
+            const string sqlStatement = "SELECT [Id], [ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid],  [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+                "FROM [dbo].[Order] WHERE [ClientId]=@ClientId ";
+
+            var result = new List<Order>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@ClientId", DbType.Int32, ClienteId);
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var order = LoadOrder(dr); // Mapper
+                        result.Add(order);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Crea una nueva Categoría desde un Datareader.
         /// </summary>

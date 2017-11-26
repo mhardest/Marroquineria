@@ -18,6 +18,14 @@ namespace ASF.UI.WbSite.Areas.OrderDetails.Controllers
             return View(lista);
         }
 
+
+        public ActionResult VerOrderDetalle(int OrderId)
+        {
+            OrderDetailProcess orderdetailprocess = new OrderDetailProcess();
+            var lista = orderdetailprocess.SelectListOrder(OrderId);
+            return View(lista);
+        }
+
         [HttpGet]
         public ActionResult Create()
         {

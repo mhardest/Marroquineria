@@ -1,44 +1,100 @@
-﻿<!DOCTYPE html>
+﻿@using ASF.UI.WbSite.Constants.HomeController
+<!DOCTYPE html>
 <html>
 <head>
+    <meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
+    @Styles.Render("~/Content/fa")
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Compras - Brutus Inc.</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span aria-hidden="true" class="icon-bar"></span>
+                    <span aria-hidden="true" class="icon-bar"></span>
+                    <span aria-hidden="true" class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("M@RTIN - Marroquineria", "Index3", "Product", new { area = "products" }, new { @class = "navbar-brand" })
-                
+                <a class="navbar-brand" role="banner" href="@Url.RouteUrl(HomeControllerRoute.GetIndex)"><span class="fa fa-star"></span> Brutus Inc </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href='@Url.Action("vercarrito", "cartitem", new { area = "cartitems" })'><img src='@Url.Content("~/Content/icons/icono-carritodecompra.png")' /></a></li>
+                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetAbout)"><span aria-hidden="true" class="fa fa-users"></span> Nosotros</a></li>
+                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetContact)"><span aria-hidden="true" class="fa fa-phone"></span> Contáctenos</a></li>
+                    <li><a href="/Products/Product/Shop"><span aria-hidden="true" class="fa fa-adn"></span> Comprar</a></li>
+                    <li><a href="/Orders/Order/VerPorCliente"><span aria-hidden="true" class="fa fa-list"></span> Ordenes</a></li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><span aria-hidden="true" class="fa fa-rss"></span> RSS</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown"><span aria-hidden="true" class="fa fa-cogs"></span> ABM <span aria-hidden="true" class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/Carts/Cart/Index"><span aria-hidden="true"></span> Cart</a></li>
+                                <li><a href="/CartItems/CartItem/Index"><span aria-hidden="true"></span> CartItem</a></li>
+                                <li><a href="/Categories/Category/Index"><span aria-hidden="true"></span> Category</a></li>
+                                <li><a href="/Clients/Client/Index"><span aria-hidden="true"></span> Client</a></li>
+                                <li><a href="/Countries/Country/Index"><span aria-hidden="true"></span> Country</a></li>
+                                <li><a href="/Dealers/Dealer/Index"><span aria-hidden="true"></span> Dealer</a></li>
+                                <li><a href="/Orders/Order/Index"><span aria-hidden="true"></span> Order</a></li>
+                                <li><a href="/OrderDetails/OrderDetail/Index"><span aria-hidden="true"></span> OrderDetail</a></li>
+                                <li><a href="/OrderNumbers/OrderNumber/Index"><span aria-hidden="true"></span> OrderNumber</a></li>
+                                <li><a href="/Products/Product/Index"><span aria-hidden="true"></span> Product</a></li>
+                                <li><a href="/Ratings/Rating/Index"><span aria-hidden="true"></span> Rating</a></li>
+                                <li><a href="/Settings/Setting/Index"><span aria-hidden="true"></span> Setting</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin")) //(HttpContext.Current.IsDebuggingEnabled)
+                    {
+                        // if <compilation debug="true"> is set in Web.config.
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown"><span aria-hidden="true" class="fa fa-cogs"></span> Debug <span aria-hidden="true" class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/glimpse.axd"><span aria-hidden="true" class="fa fa-life-ring"></span> Elmah</a></li>
+                                <li><a href="/glimpse.axd"><span aria-hidden="true" class="fa fa-line-chart"></span> Glimpse</a></li>
+                                <li><a href="/trace.axd"><span aria-hidden="true" class="fa fa-heart"></span> Tracing</a></li>
+                            </ul>
+                        </li>
+                    }
 
                 </ul>
-                
                 @Html.Partial("_LoginPartial")
+                @*<form action="@Url.RouteUrl(HomeControllerRoute.GetSearch)" class="navbar-form navbar-right" method="get" role="search">
+                        <div class="input-group">
+                            <input aria-label="Search" class="form-control" maxlength="2048" name="query" placeholder="Search" title="Search" type="text">
+                            <div class="input-group-btn">
+                                <button aria-label="Search" class="btn btn-default" type="submit"><span class="fa fa-search"></span></button>
+                            </div>
+                        </div>
+                    </form>*@
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+    </nav>
+    @* div id="main" - The main container for the page. Change this to the HTML5 main tag when it gains more browser support. *@
+    <div id="main" class="container body-content" role="main">
+        <!--[if lt IE 8]>
+            <div class="alert alert-warning" role="alert">
+                <p>You are using an outdated browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            </div>
+        <![endif]-->
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; Carrito de Compras - MCGA -  @DateTime.Now.Year</p>
+        <hr>
+        <footer role="contentinfo">
+            <p>&copy; @DateTime.Now.Year - Brutus Inc.</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryvalunobtrusive")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
+   
 </body>
 </html>

@@ -91,7 +91,7 @@ namespace ASF.Data
         public OrderDetail SelectById(int id)
         {
             const string sqlStatement = "SELECT [Id], [OrderId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
-                "FROM dbo.OrderDetail WHERE [Id]=@Id ";
+                "FROM [dbo].[OrderDetail] WHERE [Id]=@Id ";
 
             OrderDetail orderdetail = null;
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -120,6 +120,30 @@ namespace ASF.Data
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var orderdetail = LoadOrderDetail(dr); // Mapper
+                        result.Add(orderdetail);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public List<OrderDetail> SelectPorOrden(int OrderId)
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [Id], [OrderId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] "+
+                "FROM [dbo].[OrderDetail] WHERE [OrderId]=@OrderId ";
+
+            var result = new List<OrderDetail>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@OrderId", DbType.Int32, OrderId);
                 using (var dr = db.ExecuteReader(cmd))
                 {
                     while (dr.Read())

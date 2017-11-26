@@ -8,7 +8,7 @@ using ASF.UI.Process;
 
 namespace ASF.UI.WbSite.Areas.Orders.Controllers
 {
-
+    [Authorize]
     public class OrderController : Controller
     {
         
@@ -32,6 +32,19 @@ namespace ASF.UI.WbSite.Areas.Orders.Controllers
             var cp = new OrderProcess();
             cp.Add(order);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult VerPorCliente()
+        {
+            var emailusuario = User.Identity.Name;
+            var clientproces = new ClientProcess();
+            Client ClienteTest = new Client();
+            ClienteTest = clientproces.FindByEmail(emailusuario);
+
+            OrderProcess orderprocess = new OrderProcess();
+            var lista = orderprocess.SelectListXCliente(ClienteTest.Id);
+            return View(lista);
         }
 
         [HttpGet]

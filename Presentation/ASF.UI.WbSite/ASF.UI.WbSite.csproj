@@ -567,11 +567,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Areas\Products\Views\Product\Index2.cshtml" />
     <Content Include="Areas\CartItems\Views\CartItem\AgregarCarrito.cshtml" />
     <Content Include="Areas\CartItems\Views\CartItem\FinalizaCompra.cshtml" />
-    <Content Include="Areas\Products\Views\Product\Index3.cshtml" />
+    <Content Include="Areas\Products\Views\Product\Shop.cshtml" />
     <Content Include="Areas\CartItems\Views\CartItem\VerCarrito.cshtml" />
+    <Content Include="Areas\Orders\Views\Order\VerPorCliente.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\OrderDetail\VerOrderDetalle.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

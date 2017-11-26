@@ -39,6 +39,12 @@ namespace ASF.Business
             return result;
         }
 
+        public List<Order> AllCliente(int ClienteId)
+        {
+            var orderDac = new OrderDAC();
+            var result = orderDac.ListaCliente(ClienteId);
+            return result;
+        }
         /// <summary>
         /// 
         /// </summary>
