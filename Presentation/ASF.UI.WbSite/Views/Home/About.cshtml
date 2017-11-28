@@ -12,7 +12,7 @@
         {
             Email = "mmartin@asf.com",
             Phone = "111-222-333-444",
-            Website = Url.AbsoluteRouteUrl(HomeControllerRoute.GetIndex)
+            Website = Url.Action("Index", "Home") //AbsoluteRouteUrl(HomeControllerRoute.GetIndex)
         },
         new OpenGraphLocation(51.5286417, -0.1015987))
     {

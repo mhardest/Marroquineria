@@ -32,7 +32,7 @@ namespace ASF.UI.WbSite.Services.OpenSearch
                 HomeControllerRoute.GetSearch, 
                 new { query = "{searchTerms}" });
             // The link to the page with the search form on it. The home page has the search form on it.
-            string searchFormUrl = this.urlHelper.AbsoluteRouteUrl(HomeControllerRoute.GetIndex);
+            string searchFormUrl = this.urlHelper.Action("Index","Home");
             // The link to the favicon.ico file for the site.
             string favicon16Url = this.urlHelper.AbsoluteContent("~/content/icons/favicon.ico");
             // The link to the favicon.png file for the site.

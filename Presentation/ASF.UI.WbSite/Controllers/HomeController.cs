@@ -19,6 +19,7 @@ namespace ASF.UI.WbSite.Controllers
     using Boilerplate.Web.Mvc.Filters;
     using ASF.UI.WbSite.Constants;
     using ASF.UI.WbSite.Services;
+    using System.Globalization;
 
     public class HomeController : Controller
     {
@@ -56,8 +57,8 @@ namespace ASF.UI.WbSite.Controllers
 
         #endregion
 
-        [Route("", Name = HomeControllerRoute.GetIndex)]
-        public ActionResult Index()
+        //[Route("", Name = HomeControllerRoute.GetIndex)]
+        public ActionResult Index(string language)
         {
             // ***** sender email credentials (gamil) *****/
             //var msg = new IdentityMessage
@@ -67,20 +68,25 @@ namespace ASF.UI.WbSite.Controllers
             //    Destination = "user@emaill"
             //};
             //this.emailService.SendAsync(msg);
-
-            return this.View(HomeControllerAction.Index);
+            
+           //return this.View(HomeControllerAction.Index);
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(language);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+            return View();
         }
 
-        [Route("about", Name = HomeControllerRoute.GetAbout)]
+        //[Route("about", Name = HomeControllerRoute.GetAbout)]
         public ActionResult About()
         {
-            return this.View(HomeControllerAction.About);
+            return View();
+            //return this.View(HomeControllerAction.About);
         }
 
-        [Route("contact", Name = HomeControllerRoute.GetContact)]
+        //[Route("contact", Name = HomeControllerRoute.GetContact)]
         public ActionResult Contact()
         {
-            return this.View(HomeControllerAction.Contact);
+            return View();
+            //return this.View(HomeControllerAction.Contact);
         }
 
         /// <summary>

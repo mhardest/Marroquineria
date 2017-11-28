@@ -7,6 +7,13 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
+               @Html.ActionLink("ESP ", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "es-AR" }, new { style = "color: white" })
+            </li>
+            <li>
+                @Html.ActionLink("ENG ", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { language = "en-US" }, new { style = "color: white" })
+ 
+            </li>
+            <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage" })
             </li>
             <li>

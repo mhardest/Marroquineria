@@ -295,6 +295,16 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\MyTexts.en-US.Designer.cs">
+      <DependentUpon>MyTexts.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resource\MyTexts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyTexts.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\BrowserConfig\BrowserConfigService.cs" />
     <Compile Include="Services\BrowserConfig\IBrowserConfigService.cs" />
     <Compile Include="Services\Cache\CacheService.cs" />
@@ -753,6 +763,16 @@
       <Project>{16102133-b8dc-4516-b714-c2802ecfa923}</Project>
       <Name>ASF.UI.Process</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\MyTexts.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyTexts.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\MyTexts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyTexts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

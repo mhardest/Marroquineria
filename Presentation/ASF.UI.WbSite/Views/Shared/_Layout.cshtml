@@ -127,11 +127,11 @@
     {
         @Html.OpenGraph((OpenGraphMetadata)ViewBag.OpenGraph);
     }
-    @* Render the Referrer meta tag for increased privacy. *@
+    @* Render the Referrer meta tag for increased privacy.
     @if (ViewBag.ReferrerMode != null)
     {
         @Html.ReferrerMeta((ReferrerMode)ViewBag.ReferrerMode)
-    }
+    }*@
 
 
     @* Canonical - The URL of the current page. Stops case differences and http/https being treated as different URL's
@@ -149,8 +149,7 @@
     <link href="@Url.RouteUrl(HomeControllerRoute.GetOpenSearchXml).TrimEnd('/')" rel="search" title="Architecture Solutions Foundation Search" type="application/opensearchdescription+xml">
 
 
-    @* You can use the head section to render additional meta tags. *@
-    @RenderSection("head", required: false)
+   
 
 
     <style>
@@ -312,15 +311,15 @@
                     <span aria-hidden="true" class="icon-bar"></span>
                     <span aria-hidden="true" class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" role="banner" href="@Url.RouteUrl(HomeControllerRoute.GetIndex)"><span class="fa fa-star"></span> Brutus Inc </a>
+                <a class="navbar-brand" role="banner" href="@Url.Action("Index","Home")"><span class="fa fa-star"></span> Brutus Inc </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetAbout)"><span aria-hidden="true" class="fa fa-users"></span> Nosotros</a></li>
-                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetContact)"><span aria-hidden="true" class="fa fa-phone"></span> Contactenos</a></li>
-                    <li><a href="/Products/Product/Shop"><span aria-hidden="true" class="fa fa-adn"></span> Comprar</a></li>
-                    <li><a href="/Orders/Order/VerPorCliente"><span aria-hidden="true" class="fa fa-list"></span> Ordenes</a></li>
-                    <li><a href="/CartItems/CartItem/VerCarrito"><span aria-hidden="true" class="fa fa-shopping-cart"></span> Carrito</a></li>
+                    <li><a href="@Url.Action("About","Home")"><span aria-hidden="true" class="fa fa-users"></span> @ASF.UI.WbSite.Resource.MyTexts.Nosotros</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")"><span aria-hidden="true" class="fa fa-phone"></span> @ASF.UI.WbSite.Resource.MyTexts.Contactenos</a></li>
+                    <li><a href="/Products/Product/Shop"><span aria-hidden="true" class="fa fa-adn"></span> @ASF.UI.WbSite.Resource.MyTexts.Comprar</a></li>
+                    <li><a href="/Orders/Order/VerPorCliente"><span aria-hidden="true" class="fa fa-list"></span> @ASF.UI.WbSite.Resource.MyTexts.Ordenes</a></li>
+                    <li><a href="/CartItems/CartItem/VerCarrito"><span aria-hidden="true" class="fa fa-shopping-cart"></span> @ASF.UI.WbSite.Resource.MyTexts.Carrito</a></li>
 
                     @if (User.IsInRole("Admin"))
                     {

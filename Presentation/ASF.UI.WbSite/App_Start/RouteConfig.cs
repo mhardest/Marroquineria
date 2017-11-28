@@ -19,7 +19,7 @@
             routes.IgnoreRoute("Content/{*pathInfo}");
             // Ignore everything in the Scripts folder.
             routes.IgnoreRoute("Scripts/{*pathInfo}");
-            // Ignore the Forbidden.html file.
+            // Ignore the Forbidden.html file
             routes.IgnoreRoute("Error/Forbidden.html");
             // Ignore the GatewayTimeout.html file.
             routes.IgnoreRoute("Error/GatewayTimeout.html");
@@ -38,8 +38,8 @@
             // https://github.com/ASP-NET-Core-Boilerplate/Templates/issues/8
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                url: "{language}/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, language = "es-AR" });
         }
     }
 }
